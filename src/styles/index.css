@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============ BASE STYLES ============ */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-accent-dark text-white font-sans;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  /* Scrollbar personalizado */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-accent-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-500 rounded-full hover:bg-primary-600;
+  }
+
+  /* Selección de texto */
+  ::selection {
+    @apply bg-accent-red text-white;
+  }
+}
+
+/* ============ COMPONENTS ============ */
+@layer components {
+  /* App Container */
+  .app-container {
+    @apply min-h-screen bg-gradient-to-br from-accent-dark via-accent-dark to-accent-black;
+  }
+
+  /* Header Styles */
+  .app-header {
+    @apply sticky top-0 z-40 bg-accent-dark border-b-4 border-primary-500 shadow-lg;
+  }
+
+  .header-content {
+    @apply flex items-center justify-between px-6 py-4 gap-6;
+  }
+
+  .app-title {
+    @apply text-4xl font-display font-bold;
+    background: linear-gradient(135deg, #c69b63 0%, #dcc3a3 50%, #c69b63 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .app-subtitle {
+    @apply text-sm font-medium text-primary-600;
+  }
+
+  .stats-container {
+    @apply flex items-center gap-8 px-4 py-2 bg-accent-black rounded-lg border border-primary-500;
+  }
+
+  .stat-item {
+    @apply text-center;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-primary-500;
+  }
+
+  .stat-label {
+    @apply text-xs text-accent-light opacity-75;
+  }
+
+  /* Button Styles */
+  .btn {
+    @apply px-4 py-2.5 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent-red text-white hover:bg-accent-darkred focus:ring-accent-red shadow-red;
+  }
+
+  .btn-primary:hover {
+    @apply shadow-lg -translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply btn bg-accent-black text-accent-light border-2 border-primary-500 hover:bg-primary-500 hover:text-accent-black;
+  }
+
+  .btn-small {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-full hover:bg-primary-500 hover:bg-opacity-20 transition-colors;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-accent-black rounded-xl shadow-soft border-2 border-primary-500 overflow-hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card:hover {
+    @apply shadow-lg border-accent-red bg-opacity-90;
+  }
+
+  .card-header {
+    @apply bg-gradient-to-r from-accent-black to-accent-dark border-b-2 border-primary-500 text-white px-6 py-4;
+  }
+
+  .card-body {
+    @apply p-6 bg-accent-dark;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    @apply w-64 flex-shrink-0;
+  }
+
+  .sidebar-card {
+    @apply card bg-accent-dark;
+  }
+
+  .sidebar-title {
+    @apply text-lg font-display font-bold text-primary-500 mb-4;
+  }
+
+  .project-list {
+    @apply space-y-2;
+  }
+
+  .project-item {
+    @apply flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200;
+    @apply hover:bg-accent-black border-l-4 border-transparent hover:border-primary-500;
+  }
+
+  .project-item:hover .project-delete {
+    opacity: 1;
+  }
+
+  .project-item.active {
+    @apply bg-accent-black border-primary-500 shadow-red;
+  }
+
+  .project-color {
+    @apply w-4 h-4 rounded-full shadow-soft;
+  }
+
+  .project-info {
+    @apply flex-1 flex flex-col;
+  }
+
+  .project-name {
+    @apply font-medium text-sm text-accent-light;
+  }
+
+  .project-count {
+    @apply text-xs text-accent-light opacity-75;
+  }
+
+  .project-delete {
+    @apply opacity-0 transition-opacity duration-200;
+    @apply text-accent-red hover:text-accent-darkred text-lg;
+    @apply p-1 rounded hover:bg-accent-black;
+    @apply cursor-pointer;
+  }
+
+  .empty-projects {
+    @apply text-center py-8 text-accent-light opacity-50 text-sm;
+  }
+
+  /* Todo Item */
+  .todo-item {
+    @apply card p-4 border-l-4 border-primary-500 bg-accent-dark;
+  }
+
+  .todo-item.completed {
+    @apply opacity-50;
+  }
+
+  .todo-header {
+    @apply flex items-start gap-3 mb-3;
+  }
+
+  .todo-checkbox {
+    @apply w-5 h-5 mt-1 accent-primary-500 cursor-pointer;
+  }
+
+  .todo-title {
+    @apply text-sm font-semibold text-accent-light flex-1;
+  }
+
+  .todo-title.completed {
+    @apply line-through text-accent-light opacity-50;
+  }
+
+  .todo-description {
+    @apply text-xs text-accent-light opacity-75 mb-3 ml-8;
+  }
+
+  .todo-footer {
+    @apply flex items-center justify-between gap-2 ml-8 text-xs;
+  }
+
+  .todo-priority {
+    @apply font-bold px-2.5 py-1 rounded-full text-white;
+  }
+
+  .priority-high {
+    @apply bg-accent-red;
+  }
+
+  .priority-medium {
+    @apply bg-primary-500;
+  }
+
+  .priority-low {
+    @apply bg-green-500;
+  }
+
+  .todo-date {
+    @apply px-2.5 py-1 rounded-lg font-medium text-accent-light bg-accent-black;
+  }
+
+  .date-today {
+    @apply bg-blue-800 text-blue-300;
+  }
+
+  .date-tomorrow {
+    @apply bg-orange-800 text-orange-300;
+  }
+
+  .date-overdue {
+    @apply bg-red-900 text-accent-light font-bold;
+  }
+
+  .date-future {
+    @apply bg-green-800 text-green-300;
+  }
+
+  /* Form Styles */
+  .form-group {
+    @apply mb-4;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold text-primary-500 mb-2;
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-select {
+    @apply w-full px-4 py-2.5 border-2 border-primary-500 rounded-lg font-sans;
+    @apply bg-accent-black text-accent-light;
+    @apply focus:outline-none focus:border-accent-red focus:ring-2 focus:ring-accent-red focus:ring-opacity-30;
+    @apply transition-colors duration-200;
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    @apply text-accent-light opacity-40;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .modal-content {
+    @apply bg-accent-dark rounded-2xl shadow-xl p-8 w-full max-w-md border-2 border-primary-500;
+    animation: slideUp 0.3s ease;
+  }
+
+  .modal-title {
+    @apply text-2xl font-display font-bold text-primary-500 mb-4;
+  }
+
+  /* Empty State */
+  .empty-state {
+    @apply text-center py-16 px-4;
+  }
+
+  .empty-state-icon {
+    @apply text-6xl mb-4;
+  }
+
+  .empty-state-text {
+    @apply text-lg font-medium text-accent-light mb-6 opacity-75;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* ============ UTILITIES ============ */
+@layer utilities {
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #c69b63 0%, #dcc3a3 50%, #c69b63 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-effect {
+    @apply bg-accent-dark bg-opacity-80 backdrop-blur-md;
+  }
+
+  .shadow-red-glow {
+    box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+  }
+
+  .accent-gold {
+    @apply text-primary-500;
+  }
+
+  .border-gold {
+    @apply border-primary-500;
+  }
+
+  .gold-divider {
+    @apply w-full h-1 bg-gradient-to-r from-transparent via-primary-500 to-transparent;
+  }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .sidebar {
+    @apply w-56;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    @apply flex-col gap-4;
+  }
+
+  .sidebar {
+    @apply w-full;
+  }
+
+  .app-title {
+    @apply text-2xl;
+  }
+
+  .header-content {
+    @apply flex-col items-start gap-2;
+  }
+}
