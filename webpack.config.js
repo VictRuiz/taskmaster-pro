@@ -8,9 +8,9 @@ module.exports = {
   entry: './index.js',  // Ruta al archivo principal
 
   output: {
-    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    filename: 'bundle.js',
+    publicPath: '/taskmaster-pro/',
     clean: true,
   },
 

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Aplicación profesional de gestión de tareas construida con Vanilla JavaScript, Webpack y TailwindCSS",
   "main": "index.js",
-  "homepage": "https://github.com/tuusuario/taskmaster-pro",
+  "homepage": "https://tuusuario.github.io/taskmaster-pro",
   "repository": {
     "type": "git",
     "url": "https://github.com/tuusuario/taskmaster-pro.git"
@@ -14,6 +14,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack serve --mode development --open",
     "build": "NODE_ENV=production webpack --mode production",
+    "deploy": "npm run build && gh-pages -d dist",
     "dev": "NODE_ENV=development webpack --mode development --watch"
   },
   "keywords": [
@@ -46,6 +47,7 @@
     "core-js": "^3.46.0",
     "css-loader": "^6.8.1",
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.31",
